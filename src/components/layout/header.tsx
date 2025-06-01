@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -37,7 +38,7 @@ export function Header() {
             </Link>
           ))}
           <Button asChild>
-            <Link href="#contact">Join Now</Link>
+            <Link href="/application">Apply Now</Link>
           </Button>
         </nav>
 
@@ -75,7 +76,7 @@ export function Header() {
                 ))}
                 <SheetClose asChild>
                   <Button asChild className="w-full">
-                    <Link href="#contact">Join Now</Link>
+                    <Link href="/application">Apply Now</Link>
                   </Button>
                 </SheetClose>
               </div>
