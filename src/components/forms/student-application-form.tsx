@@ -3,8 +3,7 @@
 
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useActionState, useEffect } from 'react';
-import { useFormStatus } from 'react-dom';
+import Image from 'next/image'; // Import next/image
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,11 +13,14 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
-import { useToast } from '@/hooks/use-toast';
-import { 
-  studentApplicationSchema, // Import the Zod schema object
+// Removed useToast as it's no longer used for direct submission
+// Removed useActionState and useEffect for form submission state as it's print-only now
+// Removed useFormStatus as there's no pending state for submission
+
+import {
+  studentApplicationSchema,
   type StudentApplicationFormValues
-} from '@/app/application/schemas'; 
+} from '@/app/application/schemas';
 
 
 export function StudentApplicationForm() {
@@ -48,12 +50,11 @@ export function StudentApplicationForm() {
       healthConcerns: undefined,
       healthConcernsDetails: '',
       declarationParentName: '',
-      // Initialize new office use fields
       officeEnrollmentNumber: '',
       officeBatchAssigned: '',
       officeTuitionFee: '',
       officeTuitionFeeInWords: '',
-      officePaymentDate: undefined, // Or null, depending on your schema
+      officePaymentDate: undefined,
       officeStaffName: '',
       officeSignature: '',
     },
@@ -70,12 +71,22 @@ export function StudentApplicationForm() {
     <div className="container mx-auto py-8 px-4 md:px-6 student-application-form-container">
       <Card className="w-full max-w-4xl mx-auto shadow-xl student-application-form-card">
         <CardHeader className="text-center">
+          <div className="mb-4 flex justify-center">
+            <Image
+              src="https://placehold.co/200x100.png" // Replace with your actual logo path e.g., /logo.png
+              alt="Sai Medhansh Hub Logo"
+              width={200}
+              height={100}
+              data-ai-hint="education logo"
+              className="object-contain" // Ensures the logo scales nicely
+            />
+          </div>
           <CardTitle className="font-headline text-2xl md:text-3xl">Student Application Form</CardTitle>
           <CardDescription>For TUITION CLASSES (Please complete all sections in block letters)</CardDescription>
           <p className="text-sm text-muted-foreground mt-2">Enrollment Number: <span className="font-mono">{form.watch('officeEnrollmentNumber') || '____'}</span> (For Office Use)</p>
         </CardHeader>
         <CardContent>
-          <div className="space-y-8"> {/* Changed from form to div as direct form submission is removed */}
+          <div className="space-y-8">
 
             {/* Student Information */}
             <Card className="card-within-form">
@@ -382,7 +393,7 @@ export function StudentApplicationForm() {
                                 render={({ field }) => (
                                     <DatePickerInput
                                     id="officePaymentDate"
-                                    value={field.value || undefined} 
+                                    value={field.value || undefined}
                                     onChange={field.onChange}
                                     placeholder="Select payment date"
                                     />
@@ -423,5 +434,3 @@ export function StudentApplicationForm() {
     </div>
   );
 }
-
-    
