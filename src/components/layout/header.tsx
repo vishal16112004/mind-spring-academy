@@ -31,8 +31,8 @@ export function Header() {
           <Image 
             src="/logo.png" 
             alt="Mind Spring Academy Logo"
-            width={120} 
-            height={40} 
+            width={160} 
+            height={50} 
             className="object-contain"
           />
           <span className="sr-only md:not-sr-only">Mind Spring Academy</span>
@@ -68,8 +68,8 @@ export function Header() {
                     <Image 
                         src="/logo.png" 
                         alt="Mind Spring Academy Logo"
-                        width={100}
-                        height={30}
+                        width={120}
+                        height={38}
                         className="object-contain"
                     />
                      <span className="sr-only">Mind Spring Academy</span>
