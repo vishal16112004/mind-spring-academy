@@ -10,8 +10,8 @@ export function HeroSection() {
         <Image
           src="https://placehold.co/1920x1080.png"
           alt="Educational background"
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="object-cover"
           data-ai-hint="education students"
           priority
         />

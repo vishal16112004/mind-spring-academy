@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image'; 
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -22,20 +22,20 @@ export function Header() {
   }, []);
 
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}
       data-print-hide="true"
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 text-base font-headline font-semibold text-primary">
-          <Image 
-            src="/logo.png" 
+        <Link href="#home" className="flex items-center gap-2 text-primary">
+          {/* <Image
+            src="/logo.png"
             alt="Mind Spring Academy Logo"
-            width={40} 
-            height={40} 
+            width={40}
+            height={40}
             className="object-contain rounded-full"
-          />
-          <span className="sr-only lg:not-sr-only">Mind Spring Academy</span>
+          /> */}
+          <span className="font-headline font-semibold text-base sr-only lg:not-sr-only lg:text-sm">Mind Spring Academy</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -64,15 +64,15 @@ export function Header() {
             <SheetContent side="right" className="w-full max-w-xs bg-background p-6">
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
-                   <Link href="#home" className="flex items-center gap-2 text-base font-headline font-semibold text-primary">
-                    <Image 
-                        src="/logo.png" 
+                   <Link href="#home" className="flex items-center gap-2 text-primary">
+                    {/* <Image
+                        src="/logo.png"
                         alt="Mind Spring Academy Logo"
-                        width={36} 
-                        height={36}  
+                        width={36}
+                        height={36}
                         className="object-contain rounded-full"
-                    />
-                     <span className="sr-only">Mind Spring Academy</span>
+                    /> */}
+                     <span className="font-headline font-semibold text-base sr-only">Mind Spring Academy</span>
                    </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">
@@ -96,8 +96,8 @@ export function Header() {
                   </SheetClose>
                 ))}
                 <SheetClose asChild>
-                  <Button 
-                    asChild 
+                  <Button
+                    asChild
                     className={cn(
                         "w-full",
                         "opacity-0 animate-in fade-in-0 slide-in-from-right-8 duration-500 ease-out fill-mode-forwards"
