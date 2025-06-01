@@ -27,15 +27,15 @@ export function Header() {
       data-print-hide="true"
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 text-primary">
+        <Link href="#home" className="flex items-center gap-2 text-primary text-sm">
           {/* <Image
-            src="/logo.png"
+            src="/logo.png" // Assuming logo.png is in the public folder
             alt="Mind Spring Academy Logo"
-            width={40}
-            height={40}
+            width={40} // Adjusted for navbar height
+            height={40} // Adjusted for navbar height
             className="object-contain rounded-full"
           /> */}
-          <span className="font-headline font-semibold text-base sr-only lg:not-sr-only lg:text-sm">Mind Spring Academy</span>
+          <span className="font-headline font-semibold lg:text-sm sr-only lg:not-sr-only">Mind Spring Academy</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -66,13 +66,13 @@ export function Header() {
                 <div className="flex justify-between items-center">
                    <Link href="#home" className="flex items-center gap-2 text-primary">
                     {/* <Image
-                        src="/logo.png"
+                        src="/logo.png" // Assuming logo.png is in the public folder
                         alt="Mind Spring Academy Logo"
-                        width={36}
-                        height={36}
+                        width={36} // Adjusted for consistency
+                        height={36} // Adjusted for consistency
                         className="object-contain rounded-full"
                     /> */}
-                     <span className="font-headline font-semibold text-base sr-only">Mind Spring Academy</span>
+                     <span className="font-headline font-semibold text-base">Mind Spring Academy</span>
                    </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">
