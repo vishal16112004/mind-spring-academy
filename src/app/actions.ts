@@ -71,7 +71,7 @@ export async function submitContactForm(prevState: FormState | undefined, formDa
         },
     });
     
-    const adminEmail = "admin@example.com"; // Replace with your admin email
+    const adminEmail = "mindspringacademy@gmail.com"; // Updated admin email
 
     const mailOptions = {
       from: `"Mind Spring Academy Contact" <noreply@mindspring.com>`, // sender address

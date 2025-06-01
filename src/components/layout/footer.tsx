@@ -40,7 +40,7 @@ export function Footer() {
               </p>
               <p className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-accent" />
-                <a href="mailto:info@saimedhansh.com" className="hover:text-primary transition-colors">info@saimedhansh.com</a>
+                <a href="mailto:mindspringacademy@gmail.com" className="hover:text-primary transition-colors">mindspringacademy@gmail.com</a>
               </p>
               <div className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
