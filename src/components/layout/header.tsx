@@ -41,7 +41,7 @@ export function Header() {
             </Link>
           ))}
           <Button asChild>
-            <Link href="/application">Apply Now</Link>
+            <Link href="#contact">Contact Us</Link>
           </Button>
         </nav>
 
@@ -79,7 +79,7 @@ export function Header() {
                 ))}
                 <SheetClose asChild>
                   <Button asChild className="w-full">
-                    <Link href="/application">Apply Now</Link>
+                    <Link href="#contact">Contact Us</Link>
                   </Button>
                 </SheetClose>
               </div>

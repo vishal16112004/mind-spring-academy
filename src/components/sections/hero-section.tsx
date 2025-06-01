@@ -24,7 +24,7 @@ export function HeroSection() {
           Discover personalized coaching and a supportive learning environment at Sai Medhansh Hub. We are committed to helping you achieve academic excellence.
         </p>
         <Button size="lg" asChild className="shadow-lg hover:shadow-xl transition-shadow">
-          <Link href="/application">Apply for Admission</Link>
+          <Link href="/application">Admission Form</Link>
         </Button>
       </div>
     </section>
