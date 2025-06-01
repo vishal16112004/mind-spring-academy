@@ -1,5 +1,5 @@
 
-import { CheckCircle2, Brain } from 'lucide-react'; // Using a Lucide icon for a cleaner look
+import { CheckCircle2, Brain } from 'lucide-react'; 
 
 const features = [
   "Expert Faculty with Years of Teaching Experience",
@@ -17,7 +17,10 @@ const features = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-16 md:py-24 bg-background">
+    <section 
+      id="about" 
+      className="py-16 md:py-24 bg-background animate-in fade-in-0 slide-in-from-bottom-10 duration-700 ease-out"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-primary mb-4">About Mind Spring Academy</h2>

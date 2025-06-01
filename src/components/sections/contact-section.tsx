@@ -13,7 +13,10 @@ const iconComponents = {
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-16 md:py-24 bg-muted/50">
+    <section 
+      id="contact" 
+      className="py-16 md:py-24 bg-muted/50 animate-in fade-in-0 slide-in-from-bottom-10 duration-700 ease-out"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-primary mb-4">Contact Us</h2>
@@ -76,4 +79,3 @@ export function ContactSection() {
     </section>
   );
 }
-
