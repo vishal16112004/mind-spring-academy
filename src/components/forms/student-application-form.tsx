@@ -3,7 +3,11 @@
 
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Image from 'next/image'; // Import next/image
+import Image from 'next/image'; 
+import { useActionState } from 'react'; // Correct import
+import { useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
+
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,18 +17,24 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
-
-import {
-  studentApplicationSchema,
+import { useToast } from '@/hooks/use-toast';
+import { 
+  studentApplicationSchema, // Import the Zod schema object
   type StudentApplicationFormValues
-} from '@/app/application/schemas';
+} from '@/app/application/schemas'; 
+// Removed submitStudentApplication and StudentApplicationFormState as they are not used for print-only form
+// import { submitStudentApplication, type StudentApplicationFormState } from '@/app/application/actions';
 
 
 export function StudentApplicationForm() {
+  // const { toast } = useToast();
+  // const [state, formAction] = useActionState<StudentApplicationFormState | undefined, FormData>(submitStudentApplication, undefined);
+
   const form = useForm<StudentApplicationFormValues>({
-    resolver: zodResolver(studentApplicationSchema),
+    resolver: zodResolver(studentApplicationSchema), // Use the schema object
     defaultValues: {
       studentFullName: '',
+      // studentDOB: undefined, // Will be handled by Controller
       studentAge: undefined,
       studentGender: '',
       studentClass: '',
@@ -38,15 +48,18 @@ export function StudentApplicationForm() {
       parentResidentialAddress: '',
       subjectsEnrolled: '',
       preferredTiming: '',
+      // tuitionStartDate: undefined, // Will be handled by Controller
       tuitionDuration: '',
       previousMarks: '',
       areasForImprovement: '',
       emergencyContactName: '',
       emergencyContactNumber: '',
       emergencyContactRelationship: '',
-      healthConcerns: undefined,
+      healthConcerns: undefined, // Explicitly undefined for radio group
       healthConcernsDetails: '',
       declarationParentName: '',
+      // declarationDate: undefined, // Will be handled by Controller
+      // For Office Use Only - Default values
       officeEnrollmentNumber: '',
       officeBatchAssigned: '',
       officeTuitionFee: '',
@@ -59,6 +72,31 @@ export function StudentApplicationForm() {
 
   const watchHealthConcerns = form.watch("healthConcerns");
 
+  // useEffect(() => {
+  //   if (state?.status === 'success') {
+  //     toast({
+  //       title: "Success!",
+  //       description: state.message,
+  //     });
+  //     form.reset(); 
+  //   } else if (state?.status === 'error') {
+  //     toast({
+  //       title: "Error!",
+  //       description: state.message || "An error occurred. Please try again.",
+  //       variant: "destructive",
+  //     });
+  //     if (state.errors) {
+  //        const fieldErrors = state.errors as Partial<Record<keyof StudentApplicationFormValues, string[]>>;
+  //       (Object.keys(fieldErrors) as Array<keyof StudentApplicationFormValues>).forEach((key) => {
+  //          const errorMessages = fieldErrors[key];
+  //          if (errorMessages && errorMessages.length > 0) {
+  //            form.setError(key, { type: 'server', message: errorMessages[0] });
+  //          }
+  //       });
+  //     }
+  //   }
+  // }, [state, toast, form]);
+
   const handlePrint = () => {
     console.log("Print button clicked, attempting window.print()");
     window.print();
@@ -70,11 +108,10 @@ export function StudentApplicationForm() {
         <CardHeader className="text-center">
           <div className="mb-4 flex justify-center">
             <Image
-              src="https://placehold.co/200x100.png" 
+              src="/logo.png" 
               alt="Mind Spring Academy Logo"
               width={200}
               height={100}
-              data-ai-hint="education logo"
               className="object-contain" 
             />
           </div>
