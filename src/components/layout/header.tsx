@@ -30,7 +30,7 @@ export function Header() {
       data-print-hide="true"
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 text-primary text-sm">
+        <Link href="#home" className="flex items-center gap-2 text-primary">
           <Image
             src="/logo.png"
             alt="Mind Spring Academy Logo"
@@ -38,7 +38,7 @@ export function Header() {
             height={40}
             className="object-contain rounded-full"
           />
-          <span className="font-headline font-semibold lg:text-sm sr-only lg:not-sr-only">Mind Spring Academy</span>
+          <span className="font-headline font-semibold hidden sm:inline-block text-xs md:text-sm">Mind Spring Academy</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
