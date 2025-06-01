@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useActionState } from 'react'; // Changed from 'react-dom'
+import { useEffect, useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,7 +15,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
 import { useToast } from '@/hooks/use-toast';
-import { submitStudentApplication, type StudentApplicationFormState, type StudentApplicationFormValues } from '@/app/application/actions'; 
+import { 
+  submitStudentApplication, 
+  type StudentApplicationFormState, 
+  type StudentApplicationFormValues,
+  studentApplicationSchema // Import the Zod schema object
+} from '@/app/application/actions'; 
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -31,7 +36,7 @@ export function StudentApplicationForm() {
   const [state, formAction] = useActionState<StudentApplicationFormState | undefined, FormData>(submitStudentApplication, undefined);
 
   const form = useForm<StudentApplicationFormValues>({
-    resolver: zodResolver(StudentApplicationFormValues), 
+    resolver: zodResolver(studentApplicationSchema), // Use the schema object here
     defaultValues: {
       studentFullName: '',
       // studentDOB: undefined, // Will be handled by Controller
@@ -392,4 +397,3 @@ export function StudentApplicationForm() {
     </div>
   );
 }
-
