@@ -12,30 +12,24 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
-// Removed useToast and server action imports as form is for print
-// import { useToast } from '@/hooks/use-toast';
-// import { submitStudentApplication, type StudentApplicationFormState } from '@/app/application/actions';
 import {
   studentApplicationSchema,
   type StudentApplicationFormValues
 } from '@/app/application/schemas';
 
 
-function PrintButton() {
+function PrintOrSaveButton() {
   const handlePrint = () => {
     window.print();
   };
   return (
     <Button type="button" onClick={handlePrint} className="w-full md:w-auto" data-print-hide="true">
-      Print Form
+      Print / Save as PDF
     </Button>
   );
 }
 
 export function StudentApplicationForm() {
-  // const { toast } = useToast(); // Not needed if not submitting
-  // const [state, formAction] = useActionState<StudentApplicationFormState | undefined, FormData>(submitStudentApplication, undefined); // Not needed
-
   const form = useForm<StudentApplicationFormValues>({
     resolver: zodResolver(studentApplicationSchema),
     defaultValues: {
@@ -72,9 +66,6 @@ export function StudentApplicationForm() {
     },
   });
 
-  // useEffect for handling submission state is removed as form is print-only
-  // useEffect(() => { ... });
-
   const watchHealthConcerns = form.watch("healthConcerns");
 
   return (
@@ -86,7 +77,6 @@ export function StudentApplicationForm() {
           <p className="text-sm text-muted-foreground mt-2">Enrollment Number: <span className="font-mono">____</span> (For Office Use)</p>
         </CardHeader>
         <CardContent>
-          {/* The form tag no longer needs an action */}
           <form className="space-y-8">
 
             {/* Student Information */}
@@ -416,7 +406,7 @@ export function StudentApplicationForm() {
             </Card>
 
             <div className="text-center md:text-right pt-4">
-              <PrintButton />
+              <PrintOrSaveButton />
             </div>
           </form>
         </CardContent>
