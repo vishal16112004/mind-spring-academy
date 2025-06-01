@@ -3,6 +3,8 @@
 
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useActionState, useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,10 +14,11 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
-import {
-  studentApplicationSchema,
+import { useToast } from '@/hooks/use-toast';
+import { 
+  studentApplicationSchema, // Import the Zod schema object
   type StudentApplicationFormValues
-} from '@/app/application/schemas';
+} from '@/app/application/schemas'; 
 
 
 export function StudentApplicationForm() {
@@ -45,11 +48,12 @@ export function StudentApplicationForm() {
       healthConcerns: undefined,
       healthConcernsDetails: '',
       declarationParentName: '',
+      // Initialize new office use fields
       officeEnrollmentNumber: '',
       officeBatchAssigned: '',
       officeTuitionFee: '',
       officeTuitionFeeInWords: '',
-      officePaymentDate: undefined,
+      officePaymentDate: undefined, // Or null, depending on your schema
       officeStaffName: '',
       officeSignature: '',
     },
@@ -68,10 +72,10 @@ export function StudentApplicationForm() {
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-2xl md:text-3xl">Student Application Form</CardTitle>
           <CardDescription>For TUITION CLASSES (Please complete all sections in block letters)</CardDescription>
-          <p className="text-sm text-muted-foreground mt-2">Enrollment Number: <span className="font-mono">____</span> (For Office Use)</p>
+          <p className="text-sm text-muted-foreground mt-2">Enrollment Number: <span className="font-mono">{form.watch('officeEnrollmentNumber') || '____'}</span> (For Office Use)</p>
         </CardHeader>
         <CardContent>
-          <form className="space-y-8">
+          <div className="space-y-8"> {/* Changed from form to div as direct form submission is removed */}
 
             {/* Student Information */}
             <Card className="card-within-form">
@@ -112,7 +116,7 @@ export function StudentApplicationForm() {
                         name="studentGender"
                         control={form.control}
                         render={({ field }) => (
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Select onValueChange={field.onChange} value={field.value} defaultValue="">
                                 <SelectTrigger id="studentGender" className="select-trigger-for-print"><SelectValue placeholder="Select gender" /></SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="male">Male</SelectItem>
@@ -277,7 +281,8 @@ export function StudentApplicationForm() {
                             render={({ field }) => (
                                 <RadioGroup
                                     onValueChange={field.onChange}
-                                    defaultValue={field.value}
+                                    value={field.value}
+                                    defaultValue=""
                                     className="flex space-x-4 mt-2"
                                 >
                                     <div className="flex items-center space-x-2">
@@ -377,7 +382,7 @@ export function StudentApplicationForm() {
                                 render={({ field }) => (
                                     <DatePickerInput
                                     id="officePaymentDate"
-                                    value={field.value || undefined} // Pass undefined if null
+                                    value={field.value || undefined} 
                                     onChange={field.onChange}
                                     placeholder="Select payment date"
                                     />
@@ -399,12 +404,20 @@ export function StudentApplicationForm() {
                 </CardContent>
             </Card>
 
-            <div className="text-center md:text-right pt-4" data-print-hide="true">
-              <Button type="button" onClick={handlePrint} className="w-full md:w-auto" data-print-hide="true">
-                Print / Save as PDF
-              </Button>
+            <div className="flex flex-col items-center md:items-end pt-4" data-print-hide="true">
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto justify-center md:justify-end">
+                <Button type="button" onClick={handlePrint} className="w-full sm:w-auto" data-print-hide="true">
+                  Print Form
+                </Button>
+                <Button type="button" onClick={handlePrint} className="w-full sm:w-auto" data-print-hide="true">
+                  Save as PDF
+                </Button>
+              </div>
+              <p className="text-xs text-muted-foreground text-center md:text-right mt-2" data-print-hide="true">
+                (For "Save as PDF", choose the PDF option in your browser's print dialog)
+              </p>
             </div>
-          </form>
+          </div>
         </CardContent>
       </Card>
     </div>
