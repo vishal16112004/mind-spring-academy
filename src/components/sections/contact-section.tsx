@@ -1,5 +1,5 @@
+
 import { ContactForm } from '@/components/contact-form';
-import { MapEmbed } from '@/components/map-embed';
 import { Phone, Mail, MapPin, ExternalLink, Instagram, Facebook, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import { socialLinks } from '@/lib/data';
@@ -48,10 +48,6 @@ export function ContactSection() {
                   </a>
                 </p>
               </div>
-            </div>
-            <div>
-              <h3 className="text-2xl font-headline font-medium text-foreground mb-4">Find Us Here</h3>
-              <MapEmbed />
             </div>
             <div>
               <h3 className="text-2xl font-headline font-medium text-foreground mb-4">Follow Us</h3>
