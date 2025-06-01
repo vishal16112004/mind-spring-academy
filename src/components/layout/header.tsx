@@ -27,12 +27,12 @@ export function Header() {
       data-print-hide="true"
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 text-2xl font-headline font-bold text-primary">
+        <Link href="#home" className="flex items-center gap-2 text-xl font-headline font-bold text-primary"> {/* Changed text-2xl to text-xl */}
           <Image 
             src="/logo.png" 
             alt="Mind Spring Academy Logo"
-            width={160} 
-            height={50} 
+            width={150} // Reduced from 160
+            height={47} // Reduced from 50, maintaining aspect ratio
             className="object-contain"
           />
           <span className="sr-only md:not-sr-only">Mind Spring Academy</span>
@@ -68,8 +68,8 @@ export function Header() {
                     <Image 
                         src="/logo.png" 
                         alt="Mind Spring Academy Logo"
-                        width={120}
-                        height={38}
+                        width={115} // Reduced from 120
+                        height={36}  // Reduced from 38, maintaining aspect ratio
                         className="object-contain"
                     />
                      <span className="sr-only">Mind Spring Academy</span>
