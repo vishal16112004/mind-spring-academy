@@ -19,22 +19,19 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { DatePickerInput } from '@/components/ui/date-picker-input';
 import { useToast } from '@/hooks/use-toast';
 import { 
-  studentApplicationSchema, // Import the Zod schema object
+  studentApplicationSchema, 
   type StudentApplicationFormValues
 } from '@/app/application/schemas'; 
 // Removed submitStudentApplication and StudentApplicationFormState as they are not used for print-only form
-// import { submitStudentApplication, type StudentApplicationFormState } from '@/app/application/actions';
 
 
 export function StudentApplicationForm() {
-  // const { toast } = useToast();
-  // const [state, formAction] = useActionState<StudentApplicationFormState | undefined, FormData>(submitStudentApplication, undefined);
+  const currentYear = new Date().getFullYear();
 
   const form = useForm<StudentApplicationFormValues>({
-    resolver: zodResolver(studentApplicationSchema), // Use the schema object
+    resolver: zodResolver(studentApplicationSchema), 
     defaultValues: {
       studentFullName: '',
-      // studentDOB: undefined, // Will be handled by Controller
       studentAge: undefined,
       studentGender: '',
       studentClass: '',
@@ -48,18 +45,15 @@ export function StudentApplicationForm() {
       parentResidentialAddress: '',
       subjectsEnrolled: '',
       preferredTiming: '',
-      // tuitionStartDate: undefined, // Will be handled by Controller
       tuitionDuration: '',
       previousMarks: '',
       areasForImprovement: '',
       emergencyContactName: '',
       emergencyContactNumber: '',
       emergencyContactRelationship: '',
-      healthConcerns: undefined, // Explicitly undefined for radio group
+      healthConcerns: undefined, 
       healthConcernsDetails: '',
       declarationParentName: '',
-      // declarationDate: undefined, // Will be handled by Controller
-      // For Office Use Only - Default values
       officeEnrollmentNumber: '',
       officeBatchAssigned: '',
       officeTuitionFee: '',
@@ -71,31 +65,6 @@ export function StudentApplicationForm() {
   });
 
   const watchHealthConcerns = form.watch("healthConcerns");
-
-  // useEffect(() => {
-  //   if (state?.status === 'success') {
-  //     toast({
-  //       title: "Success!",
-  //       description: state.message,
-  //     });
-  //     form.reset(); 
-  //   } else if (state?.status === 'error') {
-  //     toast({
-  //       title: "Error!",
-  //       description: state.message || "An error occurred. Please try again.",
-  //       variant: "destructive",
-  //     });
-  //     if (state.errors) {
-  //        const fieldErrors = state.errors as Partial<Record<keyof StudentApplicationFormValues, string[]>>;
-  //       (Object.keys(fieldErrors) as Array<keyof StudentApplicationFormValues>).forEach((key) => {
-  //          const errorMessages = fieldErrors[key];
-  //          if (errorMessages && errorMessages.length > 0) {
-  //            form.setError(key, { type: 'server', message: errorMessages[0] });
-  //          }
-  //       });
-  //     }
-  //   }
-  // }, [state, toast, form]);
 
   const handlePrint = () => {
     console.log("Print button clicked, attempting window.print()");
@@ -143,6 +112,8 @@ export function StudentApplicationForm() {
                           value={field.value}
                           onChange={field.onChange}
                           placeholder="Select date of birth"
+                          fromYear={currentYear - 30}
+                          toYear={currentYear - 2}
                         />
                       )}
                     />
@@ -259,6 +230,8 @@ export function StudentApplicationForm() {
                                     value={field.value}
                                     onChange={field.onChange}
                                     placeholder="Select start date"
+                                    fromYear={currentYear - 1}
+                                    toYear={currentYear + 2}
                                     />
                                 )}
                             />
@@ -374,6 +347,8 @@ export function StudentApplicationForm() {
                                     value={field.value}
                                     onChange={field.onChange}
                                     placeholder="Select declaration date"
+                                    fromYear={currentYear - 1}
+                                    toYear={currentYear + 1}
                                     />
                                 )}
                             />
@@ -430,6 +405,8 @@ export function StudentApplicationForm() {
                                     value={field.value || undefined}
                                     onChange={field.onChange}
                                     placeholder="Select payment date"
+                                    fromYear={currentYear - 1}
+                                    toYear={currentYear + 2}
                                     />
                                 )}
                             />

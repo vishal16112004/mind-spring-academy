@@ -17,13 +17,15 @@ import {
 interface DatePickerInputProps {
   value?: Date;
   onChange: (date?: Date) => void;
-  disabled?: (date: Date) => boolean; // Can be a Date or an array of Dates or a function
+  disabled?: (date: Date) => boolean;
   placeholder?: string;
   className?: string;
   id?: string;
+  fromYear?: number;
+  toYear?: number;
 }
 
-export function DatePickerInput({ value, onChange, disabled, placeholder = "Pick a date", className, id }: DatePickerInputProps) {
+export function DatePickerInput({ value, onChange, disabled, placeholder = "Pick a date", className, id, fromYear, toYear }: DatePickerInputProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -47,6 +49,8 @@ export function DatePickerInput({ value, onChange, disabled, placeholder = "Pick
           onSelect={onChange}
           disabled={disabled}
           initialFocus
+          fromYear={fromYear}
+          toYear={toYear}
         />
       </PopoverContent>
     </Popover>
