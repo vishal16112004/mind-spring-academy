@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
-import { Instagram, Facebook, Twitter, Mail, Phone } from 'lucide-react';
-import { socialLinks, navLinks } from '@/lib/data'; // Added navLinks
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { socialLinks, navLinks } from '@/lib/data';
 
 const iconComponents = {
   Instagram: Instagram,
@@ -15,14 +15,16 @@ export function Footer() {
   return (
     <footer className="bg-muted py-12 text-muted-foreground" data-print-hide="true">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="md:col-span-2">
             <h3 className="text-xl font-headline font-semibold text-foreground mb-4">Sai Medhansh Hub</h3>
-            <p className="text-sm">Empowering students towards a brighter academic future with personalized coaching and support.</p>
+            <p className="text-sm">
+              Where strong foundations build bright futures. We provide expert faculty, concept-based learning, and individual attention for academic excellence.
+            </p>
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-sm">
               {navLinks.map(link => (
                  <li key={link.label}><Link href={link.href} className="hover:text-primary transition-colors">{link.label}</Link></li>
               ))}
@@ -31,25 +33,33 @@ export function Footer() {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-4">Connect With Us</h4>
-            <div className="flex space-x-4 mb-4">
+            <div className="space-y-2 text-sm">
+               <p className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
+                <span>Near Prathibha Junior College, Raghavendra colony, Shadnagar</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="h-4 w-4 shrink-0 text-accent" />
+                <a href="mailto:info@saimedhansh.com" className="hover:text-primary transition-colors">info@saimedhansh.com</a>
+              </p>
+              <div className="flex items-start gap-2">
+                <Phone className="h-4 w-4 mt-0.5 shrink-0 text-accent" />
+                <div>
+                    <a href="tel:8008899955" className="hover:text-primary transition-colors block">8008899955</a>
+                    <a href="tel:9849413163" className="hover:text-primary transition-colors block">9849413163</a>
+                    <span className="block text-xs">(More numbers available)</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex space-x-3 mt-4">
               {socialLinks.map((link) => {
                 const IconComponent = iconComponents[link.iconName];
                 return (
                   <Link key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.name} className="text-muted-foreground hover:text-primary transition-colors">
-                    <IconComponent className="h-6 w-6" />
+                    <IconComponent className="h-5 w-5" />
                   </Link>
                 );
               })}
-            </div>
-            <div className="space-y-1 text-sm">
-              <p className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <a href="mailto:info@saimedhansh.com" className="hover:text-primary transition-colors">info@saimedhansh.com</a>
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <a href="tel:+911234567890" className="hover:text-primary transition-colors">+91 12345 67890</a>
-              </p>
             </div>
           </div>
         </div>
@@ -60,3 +70,4 @@ export function Footer() {
     </footer>
   );
 }
+

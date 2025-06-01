@@ -1,10 +1,11 @@
+
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Sai Medhansh Hub',
-  description: 'Empowering Students for a Brighter Future',
+  description: 'Sai Medhansh Hub - Where strong foundations build bright futures! Expert coaching, concept-based learning, and individual attention for academic excellence in Shadnagar.',
 };
 
 export default function RootLayout({
@@ -27,3 +28,4 @@ export default function RootLayout({
     </html>
   );
 }
+

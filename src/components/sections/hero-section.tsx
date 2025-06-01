@@ -18,10 +18,10 @@ export function HeroSection() {
       </div>
       <div className="relative z-10 max-w-3xl">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-bold text-foreground mb-6 leading-tight">
-          Empowering Students for a Brighter Future
+          Sai Medhansh Hub
         </h1>
         <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl mx-auto">
-          Discover personalized coaching and a supportive learning environment at Sai Medhansh Hub. We are committed to helping you achieve academic excellence.
+          Where strong foundations build bright futures! At Sai Medhansh Hub, every student matters. We offer personalized coaching and a supportive learning environment, committed to helping you achieve academic excellence.
         </p>
         <Button size="lg" asChild className="shadow-lg hover:shadow-xl transition-shadow">
           <Link href="/application">Admission Form</Link>
@@ -30,3 +30,4 @@ export function HeroSection() {
     </section>
   );
 }
+
