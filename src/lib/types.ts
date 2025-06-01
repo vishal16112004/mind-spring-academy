@@ -21,3 +21,11 @@ export interface NavLink {
   href: string;
   label: string;
 }
+
+export interface Tutor {
+  id: string;
+  name: string;
+  qualifications: string;
+  experience?: string;
+  avatarHint?: string; // For placeholder images or icons
+}

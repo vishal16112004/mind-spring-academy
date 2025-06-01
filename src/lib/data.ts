@@ -1,5 +1,5 @@
 import { BookOpen, Calculator, Atom, Languages, Users, GraduationCap, MessageSquareHeart, UserCircle } from 'lucide-react';
-import type { Course, Testimonial, NavLink } from './types';
+import type { Course, Testimonial, NavLink, Tutor } from './types';
 
 export const coursesData: Course[] = [
   { id: 'math', title: 'Mathematics', description: 'Comprehensive math coaching from basics to advanced levels.', icon: Calculator, imageHint: 'mathematics chalkboard' },
@@ -18,6 +18,7 @@ export const testimonialsData: Testimonial[] = [
 export const navLinks: NavLink[] = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
+  { href: '#tutors', label: 'Tutors'},
   { href: '#courses', label: 'Courses' },
   { href: '#testimonials', label: 'Testimonials' },
   { href: '#contact', label: 'Contact' },
@@ -27,4 +28,12 @@ export const socialLinks = [
   { name: 'Instagram', href: 'https://instagram.com', iconName: 'Instagram' as const },
   { name: 'Facebook', href: 'https://facebook.com', iconName: 'Facebook' as const },
   { name: 'Twitter', href: 'https://twitter.com', iconName: 'Twitter' as const },
+];
+
+export const tutorsData: Tutor[] = [
+  { id: 'tutor1', name: 'Marati Praveen Kumar', qualifications: 'MSc B.Ed', experience: '20 Years Teaching Experience', avatarHint: 'male teacher' },
+  { id: 'tutor2', name: 'Kethavath Ravi Kumar', qualifications: 'MA (Telugu) B.Ed', experience: '15 Years Teaching Experience', avatarHint: 'male teacher' },
+  { id: 'tutor3', name: 'MD. Vajid', qualifications: 'B.Sc B.Ed', experience: '12 Years Teaching Experience', avatarHint: 'male teacher' },
+  { id: 'tutor4', name: 'Sumithra', qualifications: 'MSc B.Ed', avatarHint: 'female teacher' },
+  { id: 'tutor5', name: 'Tammakonda Kavitha', qualifications: 'M.Com B.Ed', avatarHint: 'female teacher' },
 ];

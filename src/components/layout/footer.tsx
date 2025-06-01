@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import { Instagram, Facebook, Twitter, Mail, Phone } from 'lucide-react';
-import { socialLinks } from '@/lib/data';
+import { socialLinks, navLinks } from '@/lib/data'; // Added navLinks
 
 const iconComponents = {
   Instagram: Instagram,
@@ -23,10 +23,10 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="#courses" className="hover:text-primary transition-colors">Courses</Link></li>
-              <li><Link href="#testimonials" className="hover:text-primary transition-colors">Testimonials</Link></li>
-              <li><Link href="#contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+              {navLinks.map(link => (
+                 <li key={link.label}><Link href={link.href} className="hover:text-primary transition-colors">{link.label}</Link></li>
+              ))}
+               <li><Link href="/application" className="hover:text-primary transition-colors">Admission Form</Link></li>
             </ul>
           </div>
           <div>
