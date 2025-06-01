@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { coursesData } from '@/lib/data';
 import type { Course } from '@/lib/types';
@@ -14,7 +15,7 @@ export function CoursesSection() {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {coursesData.map((course: Course) => (
-            <Card key={course.id} className="flex flex-col hover:shadow-xl transition-shadow duration-300">
+            <Card key={course.id} className="flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <CardHeader className="items-center text-center">
                 {course.icon && <course.icon className="h-12 w-12 text-accent mb-4" />}
                 <CardTitle className="font-headline text-xl">{course.title}</CardTitle>

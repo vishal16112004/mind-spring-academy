@@ -1,3 +1,4 @@
+
 import { BookOpen, Calculator, Atom, Languages, Users, GraduationCap, MessageSquareHeart, UserCircle } from 'lucide-react';
 import type { Course, Testimonial, NavLink, Tutor } from './types';
 
@@ -9,7 +10,7 @@ export const coursesData: Course[] = [
 ];
 
 export const testimonialsData: Testimonial[] = [
-  { id: '1', quote: "Sai Medhansh Tuition has significantly improved my child's grades. The teachers are excellent and very supportive!", name: 'Aarav Sharma', role: 'Parent of Class 10 Student', avatarHint: 'happy parent' },
+  { id: '1', quote: "Mind Spring Academy has significantly improved my child's grades. The teachers are excellent and very supportive!", name: 'Aarav Sharma', role: 'Parent of Class 10 Student', avatarHint: 'happy parent' },
   { id: '2', quote: 'I finally understand complex math concepts thanks to the clear explanations and personalized attention here.', name: 'Priya Singh', role: 'Student, Class 10', avatarHint: 'focused student' },
   { id: '3', quote: 'The learning environment is very positive and encouraging. The regular tests helped me track my progress. Highly recommended!', name: 'Rohan Mehta', role: 'Student, Class 12', avatarHint: 'successful graduate' },
   { id: '4', quote: "My daughter's confidence in Science has boosted tremendously. The practical approach to teaching is fantastic. Thank you!", name: 'Sunita Patel', role: 'Parent of Class 9 Student', avatarHint: 'proud mother' },
@@ -21,7 +22,7 @@ export const navLinks: NavLink[] = [
   { href: '#tutors', label: 'Tutors'},
   { href: '#courses', label: 'Courses' },
   { href: '#testimonials', label: 'Testimonials' },
-  { href: '#contact', label: 'Contact' },
+  // { href: '#contact', label: 'Contact' }, // Contact is usually a button or in footer
 ];
 
 export const socialLinks = [

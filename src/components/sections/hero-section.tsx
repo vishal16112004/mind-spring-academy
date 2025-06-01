@@ -23,7 +23,7 @@ export function HeroSection() {
         <p className="text-lg md:text-xl text-foreground/80 mb-10 max-w-2xl mx-auto">
           Where strong foundations build bright futures! At Mind Spring Academy, every student matters. We offer personalized coaching and a supportive learning environment, committed to helping you achieve academic excellence.
         </p>
-        <Button size="lg" asChild className="shadow-lg hover:shadow-xl transition-shadow">
+        <Button size="lg" asChild className="shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
           <Link href="/application">Admission Form</Link>
         </Button>
       </div>

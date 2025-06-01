@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -12,12 +13,12 @@ export function TestimonialsSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-primary mb-4">What Our Students & Parents Say</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real stories from those who have experienced the Sai Medhansh difference.
+            Real stories from those who have experienced the Mind Spring difference.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-8">
           {testimonialsData.map((testimonial: Testimonial) => (
-            <Card key={testimonial.id} className="flex flex-col justify-between shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card key={testimonial.id} className="flex flex-col justify-between shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <CardHeader>
                 <div className="flex items-center space-x-2 mb-2">
                   {[...Array(5)].map((_, i) => (
@@ -30,7 +31,7 @@ export function TestimonialsSection() {
               </CardContent>
               <CardFooter className="flex items-center pt-4 border-t mt-auto">
                 <Avatar className="h-12 w-12 mr-4">
-                  <AvatarImage src={testimonial.avatarUrl || `https://placehold.co/100x100.png?text=${testimonial.name.charAt(0)}`} alt={testimonial.name} data-ai-hint={testimonial.avatarHint} />
+                  <AvatarImage src={testimonial.avatarUrl || `/logo.png`} alt={testimonial.name} />
                   <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>

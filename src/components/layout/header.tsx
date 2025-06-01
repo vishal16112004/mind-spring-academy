@@ -2,12 +2,13 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image'; // Import Image component
+import Image from 'next/image'; 
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { navLinks } from '@/lib/data';
+import { cn } from '@/lib/utils';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +43,7 @@ export function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-foreground/80 hover:text-primary transition-colors font-medium"
+              className="text-foreground/80 hover:text-primary transition-colors duration-200 font-medium"
             >
               {link.label}
             </Link>
@@ -80,18 +81,29 @@ export function Header() {
                      </Button>
                   </SheetClose>
                 </div>
-                {navLinks.map((link) => (
+                {navLinks.map((link, index) => (
                   <SheetClose asChild key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-lg text-foreground/80 hover:text-primary transition-colors"
+                      className={cn(
+                        "text-lg text-foreground/80 hover:text-primary transition-colors duration-200",
+                        "opacity-0 animate-in fade-in-0 slide-in-from-right-8 duration-500 ease-out fill-mode-forwards"
+                      )}
+                      style={{ animationDelay: `${100 + index * 75}ms` }}
                     >
                       {link.label}
                     </Link>
                   </SheetClose>
                 ))}
                 <SheetClose asChild>
-                  <Button asChild className="w-full">
+                  <Button 
+                    asChild 
+                    className={cn(
+                        "w-full",
+                        "opacity-0 animate-in fade-in-0 slide-in-from-right-8 duration-500 ease-out fill-mode-forwards"
+                    )}
+                    style={{ animationDelay: `${100 + navLinks.length * 75}ms` }}
+                  >
                     <Link href="#contact">Contact Us</Link>
                   </Button>
                 </SheetClose>

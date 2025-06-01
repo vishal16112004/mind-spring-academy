@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { tutorsData } from '@/lib/data';
 import type { Tutor } from '@/lib/types';
@@ -15,7 +16,7 @@ export function TutorsSection() {
         </div>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tutorsData.map((tutor: Tutor) => (
-            <Card key={tutor.id} className="flex flex-col text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card key={tutor.id} className="flex flex-col text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <CardHeader className="items-center">
                 <div className="p-3 bg-accent/10 rounded-full mb-4">
                   <GraduationCap className="h-10 w-10 text-accent" />
