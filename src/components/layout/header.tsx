@@ -2,7 +2,8 @@
 "use client";
 
 import Link from 'next/link';
-import { Menu, X, GraduationCap } from 'lucide-react';
+import Image from 'next/image'; // Import Image component
+import { Menu, X } from 'lucide-react'; // Removed GraduationCap as it's being replaced
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
@@ -26,8 +27,15 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="#home" className="flex items-center gap-2 text-2xl font-headline font-bold text-primary">
-          <GraduationCap className="h-8 w-8" />
-          Mind Spring Academy
+          <Image 
+            src="https://placehold.co/120x40.png" // Placeholder for your logo
+            alt="Mind Spring Academy Logo"
+            width={120} // Adjust as needed
+            height={40} // Adjust as needed
+            data-ai-hint="academy logo"
+            className="object-contain"
+          />
+          <span className="sr-only md:not-sr-only">Mind Spring Academy</span> {/* Hide text if logo is self-explanatory or for cleaner look on small screens if desired */}
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -57,8 +65,15 @@ export function Header() {
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
                    <Link href="#home" className="flex items-center gap-2 text-xl font-headline font-bold text-primary">
-                     <GraduationCap className="h-7 w-7" />
-                     Mind Spring Academy
+                    <Image 
+                        src="https://placehold.co/100x30.png" // Smaller placeholder for mobile menu
+                        alt="Mind Spring Academy Logo"
+                        width={100}
+                        height={30}
+                        data-ai-hint="academy logo"
+                        className="object-contain"
+                    />
+                     <span className="sr-only">Mind Spring Academy</span>
                    </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">
