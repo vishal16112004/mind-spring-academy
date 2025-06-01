@@ -18,17 +18,6 @@ import {
 } from '@/app/application/schemas';
 
 
-function PrintOrSaveButton() {
-  const handlePrint = () => {
-    window.print();
-  };
-  return (
-    <Button type="button" onClick={handlePrint} className="w-full md:w-auto" data-print-hide="true">
-      Print / Save as PDF
-    </Button>
-  );
-}
-
 export function StudentApplicationForm() {
   const form = useForm<StudentApplicationFormValues>({
     resolver: zodResolver(studentApplicationSchema),
@@ -67,6 +56,11 @@ export function StudentApplicationForm() {
   });
 
   const watchHealthConcerns = form.watch("healthConcerns");
+
+  const handlePrint = () => {
+    console.log("Print button clicked, attempting window.print()");
+    window.print();
+  };
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6 student-application-form-container">
@@ -119,7 +113,7 @@ export function StudentApplicationForm() {
                         control={form.control}
                         render={({ field }) => (
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <SelectTrigger id="studentGender"><SelectValue placeholder="Select gender" /></SelectTrigger>
+                                <SelectTrigger id="studentGender" className="select-trigger-for-print"><SelectValue placeholder="Select gender" /></SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="male">Male</SelectItem>
                                     <SelectItem value="female">Female</SelectItem>
@@ -405,8 +399,10 @@ export function StudentApplicationForm() {
                 </CardContent>
             </Card>
 
-            <div className="text-center md:text-right pt-4">
-              <PrintOrSaveButton />
+            <div className="text-center md:text-right pt-4" data-print-hide="true">
+              <Button type="button" onClick={handlePrint} className="w-full md:w-auto" data-print-hide="true">
+                Print / Save as PDF
+              </Button>
             </div>
           </form>
         </CardContent>
@@ -414,3 +410,5 @@ export function StudentApplicationForm() {
     </div>
   );
 }
+
+    
