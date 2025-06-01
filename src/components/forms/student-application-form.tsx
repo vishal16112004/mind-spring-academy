@@ -13,9 +13,6 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
-// Removed useToast as it's no longer used for direct submission
-// Removed useActionState and useEffect for form submission state as it's print-only now
-// Removed useFormStatus as there's no pending state for submission
 
 import {
   studentApplicationSchema,
@@ -73,12 +70,12 @@ export function StudentApplicationForm() {
         <CardHeader className="text-center">
           <div className="mb-4 flex justify-center">
             <Image
-              src="https://placehold.co/200x100.png" // Replace with your actual logo path e.g., /logo.png
-              alt="Sai Medhansh Hub Logo"
+              src="https://placehold.co/200x100.png" 
+              alt="Mind Spring Academy Logo"
               width={200}
               height={100}
               data-ai-hint="education logo"
-              className="object-contain" // Ensures the logo scales nicely
+              className="object-contain" 
             />
           </div>
           <CardTitle className="font-headline text-2xl md:text-3xl">Student Application Form</CardTitle>
@@ -324,7 +321,7 @@ export function StudentApplicationForm() {
                 <CardHeader><CardTitle className="font-headline text-xl">7. Declaration</CardTitle></CardHeader>
                 <CardContent className="space-y-4 md:space-y-6">
                     <p className="text-sm text-foreground/80">
-                        I, <Input {...form.register('declarationParentName')} placeholder="Parent/Guardian's Name" className="inline-block w-auto p-1 border-b focus:border-primary" />, declare that the information provided above is accurate and complete. I understand that Sai Medhansh Hub will not be responsible for any unforeseen incidents or health issues not disclosed in this form.
+                        I, <Input {...form.register('declarationParentName')} placeholder="Parent/Guardian's Name" className="inline-block w-auto p-1 border-b focus:border-primary" />, declare that the information provided above is accurate and complete. I understand that Mind Spring Academy will not be responsible for any unforeseen incidents or health issues not disclosed in this form.
                     </p>
                     {form.formState.errors.declarationParentName && <p className="text-sm text-destructive mt-1">{form.formState.errors.declarationParentName.message}</p>}
 

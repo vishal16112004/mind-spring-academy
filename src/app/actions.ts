@@ -74,9 +74,9 @@ export async function submitContactForm(prevState: FormState | undefined, formDa
     const adminEmail = "admin@example.com"; // Replace with your admin email
 
     const mailOptions = {
-      from: `"Sai Medhansh Hub Contact" <noreply@saimedhansh.com>`, // sender address
+      from: `"Mind Spring Academy Contact" <noreply@mindspring.com>`, // sender address
       to: adminEmail, // list of receivers
-      subject: "New Contact Form Submission - Sai Medhansh Hub", // Subject line
+      subject: "New Contact Form Submission - Mind Spring Academy", // Subject line
       html: `
         <h1>New Contact Form Submission</h1>
         <p><strong>Full Name:</strong> ${validatedFields.data.fullName}</p>

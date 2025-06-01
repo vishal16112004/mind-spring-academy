@@ -22,7 +22,7 @@ export function AboutSection() {
     <section id="about" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-headline font-semibold text-primary mb-4">About Sai Medhansh Hub</h2>
+          <h2 className="text-3xl md:text-4xl font-headline font-semibold text-primary mb-4">About Mind Spring Academy</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Nurturing minds and fostering a love for learning. Where every student matters.
           </p>
@@ -30,7 +30,7 @@ export function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-headline font-medium text-foreground mb-3">Why Choose Sai Medhansh Hub?</h3>
+              <h3 className="text-2xl font-headline font-medium text-foreground mb-3">Why Choose Mind Spring Academy?</h3>
               <ul className="space-y-3 text-foreground/80">
                 {features.map((feature, index) => (
                   <li key={index} className="flex items-start">
@@ -49,7 +49,7 @@ export function AboutSection() {
               <CardContent className="p-0">
                 <Image
                   src="https://placehold.co/600x400.png"
-                  alt="Sai Medhansh Tuition classroom or engaged students"
+                  alt="Mind Spring Academy classroom or engaged students"
                   width={600}
                   height={400}
                   className="w-full h-auto object-cover"
@@ -63,4 +63,3 @@ export function AboutSection() {
     </section>
   );
 }
-

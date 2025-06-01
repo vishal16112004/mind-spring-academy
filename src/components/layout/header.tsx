@@ -27,7 +27,7 @@ export function Header() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="#home" className="flex items-center gap-2 text-2xl font-headline font-bold text-primary">
           <GraduationCap className="h-8 w-8" />
-          Sai Medhansh Hub
+          Mind Spring Academy
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -58,7 +58,7 @@ export function Header() {
                 <div className="flex justify-between items-center">
                    <Link href="#home" className="flex items-center gap-2 text-xl font-headline font-bold text-primary">
                      <GraduationCap className="h-7 w-7" />
-                     Sai Medhansh Hub
+                     Mind Spring Academy
                    </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">

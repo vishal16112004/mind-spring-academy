@@ -4,8 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Sai Medhansh Hub',
-  description: 'Sai Medhansh Hub - Where strong foundations build bright futures! Expert coaching, concept-based learning, and individual attention for academic excellence in Shadnagar.',
+  title: 'Mind Spring Academy',
+  description: 'Mind Spring Academy - Where strong foundations build bright futures! Expert coaching, concept-based learning, and individual attention for academic excellence in Shadnagar.',
 };
 
 export default function RootLayout({

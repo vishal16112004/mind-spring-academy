@@ -17,7 +17,7 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
-            <h3 className="text-xl font-headline font-semibold text-foreground mb-4">Sai Medhansh Hub</h3>
+            <h3 className="text-xl font-headline font-semibold text-foreground mb-4">Mind Spring Academy</h3>
             <p className="text-sm">
               Where strong foundations build bright futures. We provide expert faculty, concept-based learning, and individual attention for academic excellence.
             </p>
@@ -47,6 +47,8 @@ export function Footer() {
                 <div>
                     <a href="tel:8008899955" className="hover:text-primary transition-colors block">8008899955</a>
                     <a href="tel:9849413163" className="hover:text-primary transition-colors block">9849413163</a>
+                    <a href="tel:9390872053" className="hover:text-primary transition-colors block">9390872053</a>
+                    <a href="tel:9552517437" className="hover:text-primary transition-colors block">9552517437</a>
                     <span className="block text-xs">(More numbers available)</span>
                 </div>
               </div>
@@ -64,10 +66,9 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-border pt-8 text-center text-sm">
-          <p>&copy; {currentYear} Sai Medhansh Tuition. All rights reserved.</p>
+          <p>&copy; {currentYear} Mind Spring Academy. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
 }
-
