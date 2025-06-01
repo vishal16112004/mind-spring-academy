@@ -1,7 +1,5 @@
 
-import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
-import { CheckCircle2 } from 'lucide-react'; // Using a Lucide icon for a cleaner look
+import { CheckCircle2, Brain } from 'lucide-react'; // Using a Lucide icon for a cleaner look
 
 const features = [
   "Expert Faculty with Years of Teaching Experience",
@@ -44,19 +42,8 @@ export function AboutSection() {
               Your success is our mission. Join the learning revolution today!
             </p>
           </div>
-          <div>
-            <Card className="overflow-hidden shadow-xl">
-              <CardContent className="p-0">
-                <Image
-                  src="https://placehold.co/600x400.png"
-                  alt="Mind Spring Academy classroom or engaged students"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover"
-                  data-ai-hint="classroom students"
-                />
-              </CardContent>
-            </Card>
+          <div className="flex justify-center items-center p-8">
+            <Brain className="h-48 w-48 text-accent opacity-30" />
           </div>
         </div>
       </div>
