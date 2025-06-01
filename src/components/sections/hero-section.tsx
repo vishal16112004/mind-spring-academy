@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -23,7 +24,7 @@ export function HeroSection() {
           Discover personalized coaching and a supportive learning environment at Sai Medhansh Hub. We are committed to helping you achieve academic excellence.
         </p>
         <Button size="lg" asChild className="shadow-lg hover:shadow-xl transition-shadow">
-          <Link href="#contact">Join Now</Link>
+          <Link href="/application">Apply for Admission</Link>
         </Button>
       </div>
     </section>
