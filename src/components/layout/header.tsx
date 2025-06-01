@@ -27,15 +27,15 @@ export function Header() {
       data-print-hide="true"
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 text-xl font-headline font-bold text-primary"> {/* Changed text-2xl to text-xl */}
+        <Link href="#home" className="flex items-center gap-2 text-lg font-headline font-bold text-primary"> {/* Changed text-xl to text-lg */}
           <Image 
             src="/logo.png" 
             alt="Mind Spring Academy Logo"
-            width={150} // Reduced from 160
-            height={47} // Reduced from 50, maintaining aspect ratio
+            width={120} // Reduced from 150
+            height={37} // Reduced from 47, maintaining aspect ratio
             className="object-contain"
           />
-          <span className="sr-only md:not-sr-only">Mind Spring Academy</span>
+          <span className="sr-only lg:not-sr-only">Mind Spring Academy</span> {/* Text now appears on lg screens and up */}
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -64,12 +64,12 @@ export function Header() {
             <SheetContent side="right" className="w-full max-w-xs bg-background p-6">
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
-                   <Link href="#home" className="flex items-center gap-2 text-xl font-headline font-bold text-primary">
+                   <Link href="#home" className="flex items-center gap-2 text-lg font-headline font-bold text-primary"> {/* Changed text-xl to text-lg */}
                     <Image 
                         src="/logo.png" 
                         alt="Mind Spring Academy Logo"
-                        width={115} // Reduced from 120
-                        height={36}  // Reduced from 38, maintaining aspect ratio
+                        width={110} // Reduced from 115
+                        height={34}  // Reduced from 36, maintaining aspect ratio
                         className="object-contain"
                     />
                      <span className="sr-only">Mind Spring Academy</span>
