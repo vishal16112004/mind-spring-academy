@@ -1,9 +1,9 @@
 
 "use client";
 
-import { useEffect } from 'react';
-import { useFormState as useActionState, useFormStatus } from 'react-dom';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { useEffect, useActionState } from 'react'; // Changed from 'react-dom'
+import { useFormStatus } from 'react-dom';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '@/components/ui/button';
@@ -12,10 +12,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
 import { useToast } from '@/hooks/use-toast';
-import { submitStudentApplication, type StudentApplicationFormState, type StudentApplicationFormValues } from '@/app/application/actions'; // Zod schema is inferred for values
+import { submitStudentApplication, type StudentApplicationFormState, type StudentApplicationFormValues } from '@/app/application/actions'; 
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -31,7 +31,7 @@ export function StudentApplicationForm() {
   const [state, formAction] = useActionState<StudentApplicationFormState | undefined, FormData>(submitStudentApplication, undefined);
 
   const form = useForm<StudentApplicationFormValues>({
-    resolver: zodResolver(StudentApplicationFormValues), // Use the inferred type from Zod
+    resolver: zodResolver(StudentApplicationFormValues), 
     defaultValues: {
       studentFullName: '',
       // studentDOB: undefined, // Will be handled by Controller
@@ -55,7 +55,7 @@ export function StudentApplicationForm() {
       emergencyContactName: '',
       emergencyContactNumber: '',
       emergencyContactRelationship: '',
-      healthConcerns: undefined, // 'yes' or 'no'
+      healthConcerns: undefined, 
       healthConcernsDetails: '',
       declarationParentName: '',
       // declarationDate: undefined,
@@ -392,3 +392,4 @@ export function StudentApplicationForm() {
     </div>
   );
 }
+
