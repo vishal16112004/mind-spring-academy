@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Instagram, Facebook, Twitter, Mail, Phone } from 'lucide-react';
 import { socialLinks } from '@/lib/data';
@@ -12,7 +13,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted py-12 text-muted-foreground">
+    <footer className="bg-muted py-12 text-muted-foreground" data-print-hide="true">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>

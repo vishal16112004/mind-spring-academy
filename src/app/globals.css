@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -108,4 +109,120 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.8);
+}
+
+/* Print specific styles */
+@media print {
+  body {
+    font-family: 'Times New Roman', Times, serif; /* Common print font */
+    font-size: 12pt;
+    color: #000;
+    background-color: #fff !important;
+  }
+
+  [data-print-hide="true"] {
+    display: none !important;
+  }
+
+  .student-application-form-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .student-application-form-card,
+  .card-within-form {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important; /* Light border for cards in print */
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+    padding: 0.5rem !important; /* Reduce padding for print */
+    border-radius: 0 !important;
+  }
+  
+  .student-application-form-card .card-within-form {
+     border: 1px solid #eee !important; /* Lighter border for inner sections */
+  }
+
+  /* Ensure inputs, textareas, and select triggers are visible and styled for print */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  .select-trigger-for-print { /* Add this class to SelectTrigger if needed or target ShadCN's classes */
+    border: 1px solid #999 !important;
+    background-color: #fff !important;
+    color: #000 !important;
+    padding: 0.25rem 0.5rem !important; /* Adjust padding for print */
+    font-size: 11pt !important;
+    border-radius: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  /* Hide select dropdown arrows in print */
+  .select-trigger-for-print svg {
+      display: none !important;
+  }
+
+  /* Make labels more prominent if needed */
+  label {
+    font-weight: bold !important;
+    color: #000 !important;
+    margin-bottom: 0.2rem !important; /* Adjust spacing */
+  }
+  
+  h1, h2, h3, h4, h5, h6, .font-headline {
+    color: #000 !important;
+    font-family: 'Times New Roman', Times, serif !important; /* Ensure headlines use print font */
+  }
+  
+  p, span, div {
+     color: #000 !important; /* Ensure all text is black for print */
+  }
+
+  /* Remove unnecessary page breaks inside cards or sections */
+  .card, .card-within-form {
+    page-break-inside: avoid !important;
+  }
+  
+  /* Attempt to ensure background colors for radio/checkboxes print (browser dependent) */
+  input[type="radio"], input[type="checkbox"] {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* ShadCN specific date picker input */
+  button[id^="studentDOB"], button[id^="tuitionStartDate"], button[id^="declarationDate"], button[id^="officePaymentDate"] {
+    border: 1px solid #999 !important;
+    background-color: #fff !important;
+    color: #000 !important;
+    justify-content: flex-start !important; /* Align text left */
+    border-radius: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+   button[id^="studentDOB"] span, button[id^="tuitionStartDate"] span, button[id^="declarationDate"] span, button[id^="officePaymentDate"] span {
+       color: #000 !important;
+   }
+   button[id^="studentDOB"] svg, button[id^="tuitionStartDate"] svg, button[id^="declarationDate"] svg, button[id^="officePaymentDate"] svg {
+       display: none !important; /* Hide calendar icon in print */
+   }
+
+   /* For SelectTrigger specifically to make its content visible */
+    [role="combobox"][data-state="closed"] {
+        border: 1px solid #999 !important;
+        background-color: #fff !important;
+        color: #000 !important;
+         -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    [role="combobox"][data-state="closed"] span {
+         color: #000 !important;
+    }
+     [role="combobox"][data-state="closed"] svg {
+         display: none !important;
+    }
 }

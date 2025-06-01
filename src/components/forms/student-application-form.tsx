@@ -1,8 +1,6 @@
 
 "use client";
 
-import { useEffect, useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -14,35 +12,34 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { DatePickerInput } from '@/components/ui/date-picker-input';
-import { useToast } from '@/hooks/use-toast';
-import { 
-  submitStudentApplication, 
-  type StudentApplicationFormState
-} from '@/app/application/actions'; 
-import { 
-  studentApplicationSchema, // Import the Zod schema object
-  type StudentApplicationFormValues 
+// Removed useToast and server action imports as form is for print
+// import { useToast } from '@/hooks/use-toast';
+// import { submitStudentApplication, type StudentApplicationFormState } from '@/app/application/actions';
+import {
+  studentApplicationSchema,
+  type StudentApplicationFormValues
 } from '@/app/application/schemas';
 
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function PrintButton() {
+  const handlePrint = () => {
+    window.print();
+  };
   return (
-    <Button type="submit" className="w-full md:w-auto" disabled={pending}>
-      {pending ? 'Submitting...' : 'Submit Application'}
+    <Button type="button" onClick={handlePrint} className="w-full md:w-auto" data-print-hide="true">
+      Print Form
     </Button>
   );
 }
 
 export function StudentApplicationForm() {
-  const { toast } = useToast();
-  const [state, formAction] = useActionState<StudentApplicationFormState | undefined, FormData>(submitStudentApplication, undefined);
+  // const { toast } = useToast(); // Not needed if not submitting
+  // const [state, formAction] = useActionState<StudentApplicationFormState | undefined, FormData>(submitStudentApplication, undefined); // Not needed
 
   const form = useForm<StudentApplicationFormValues>({
-    resolver: zodResolver(studentApplicationSchema), // Use the schema object here
+    resolver: zodResolver(studentApplicationSchema),
     defaultValues: {
       studentFullName: '',
-      // studentDOB: undefined, // Will be handled by Controller
       studentAge: undefined,
       studentGender: '',
       studentClass: '',
@@ -56,61 +53,44 @@ export function StudentApplicationForm() {
       parentResidentialAddress: '',
       subjectsEnrolled: '',
       preferredTiming: '',
-      // tuitionStartDate: undefined,
       tuitionDuration: '',
       previousMarks: '',
       areasForImprovement: '',
       emergencyContactName: '',
       emergencyContactNumber: '',
       emergencyContactRelationship: '',
-      healthConcerns: undefined, 
+      healthConcerns: undefined,
       healthConcernsDetails: '',
       declarationParentName: '',
-      // declarationDate: undefined,
+      officeEnrollmentNumber: '',
+      officeBatchAssigned: '',
+      officeTuitionFee: '',
+      officeTuitionFeeInWords: '',
+      officePaymentDate: undefined,
+      officeStaffName: '',
+      officeSignature: '',
     },
   });
 
-  useEffect(() => {
-    if (state?.status === 'success') {
-      toast({
-        title: "Success!",
-        description: state.message,
-      });
-      form.reset();
-    } else if (state?.status === 'error') {
-      toast({
-        title: "Error!",
-        description: state.message || "An error occurred. Please try again.",
-        variant: "destructive",
-      });
-      if (state.errors) {
-        for (const [fieldName, errors] of Object.entries(state.errors)) {
-          if (errors && errors.length > 0) {
-            form.setError(fieldName as keyof StudentApplicationFormValues, {
-              type: 'server',
-              message: errors[0],
-            });
-          }
-        }
-      }
-    }
-  }, [state, toast, form]);
+  // useEffect for handling submission state is removed as form is print-only
+  // useEffect(() => { ... });
 
   const watchHealthConcerns = form.watch("healthConcerns");
 
   return (
-    <div className="container mx-auto py-8 px-4 md:px-6">
-      <Card className="w-full max-w-4xl mx-auto shadow-xl">
+    <div className="container mx-auto py-8 px-4 md:px-6 student-application-form-container">
+      <Card className="w-full max-w-4xl mx-auto shadow-xl student-application-form-card">
         <CardHeader className="text-center">
           <CardTitle className="font-headline text-2xl md:text-3xl">Student Application Form</CardTitle>
-          <CardDescription>For TUITION CLASSES (Please complete all sections)</CardDescription>
+          <CardDescription>For TUITION CLASSES (Please complete all sections in block letters)</CardDescription>
           <p className="text-sm text-muted-foreground mt-2">Enrollment Number: <span className="font-mono">____</span> (For Office Use)</p>
         </CardHeader>
         <CardContent>
-          <form action={formAction} className="space-y-8">
+          {/* The form tag no longer needs an action */}
+          <form className="space-y-8">
 
             {/* Student Information */}
-            <Card>
+            <Card className="card-within-form">
               <CardHeader><CardTitle className="font-headline text-xl">1. Student Information</CardTitle></CardHeader>
               <CardContent className="space-y-4 md:space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -175,7 +155,7 @@ export function StudentApplicationForm() {
             </Card>
 
             {/* Parent/Guardian Information */}
-            <Card>
+            <Card className="card-within-form">
               <CardHeader><CardTitle className="font-headline text-xl">2. Parent/Guardian Information</CardTitle></CardHeader>
               <CardContent className="space-y-4 md:space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -221,7 +201,7 @@ export function StudentApplicationForm() {
             </Card>
 
             {/* Tuition Details */}
-            <Card>
+            <Card className="card-within-form">
                 <CardHeader><CardTitle className="font-headline text-xl">3. Tuition Details</CardTitle></CardHeader>
                 <CardContent className="space-y-4 md:space-y-6">
                     <div>
@@ -261,7 +241,7 @@ export function StudentApplicationForm() {
             </Card>
 
             {/* Academic Background */}
-             <Card>
+             <Card className="card-within-form">
                 <CardHeader><CardTitle className="font-headline text-xl">4. Academic Background</CardTitle></CardHeader>
                 <CardContent className="space-y-4 md:space-y-6">
                     <div>
@@ -278,7 +258,7 @@ export function StudentApplicationForm() {
             </Card>
 
             {/* Emergency Contact Information */}
-            <Card>
+            <Card className="card-within-form">
                 <CardHeader><CardTitle className="font-headline text-xl">5. Emergency Contact Information</CardTitle></CardHeader>
                 <CardContent className="space-y-4 md:space-y-6">
                     <div>
@@ -302,7 +282,7 @@ export function StudentApplicationForm() {
             </Card>
 
             {/* Medical Information */}
-            <Card>
+            <Card className="card-within-form">
                 <CardHeader><CardTitle className="font-headline text-xl">6. Medical Information</CardTitle></CardHeader>
                 <CardContent className="space-y-4 md:space-y-6">
                     <div>
@@ -338,16 +318,16 @@ export function StudentApplicationForm() {
                     )}
                 </CardContent>
             </Card>
-            
+
             {/* Declaration */}
-            <Card>
+            <Card className="card-within-form">
                 <CardHeader><CardTitle className="font-headline text-xl">7. Declaration</CardTitle></CardHeader>
                 <CardContent className="space-y-4 md:space-y-6">
                     <p className="text-sm text-foreground/80">
                         I, <Input {...form.register('declarationParentName')} placeholder="Parent/Guardian's Name" className="inline-block w-auto p-1 border-b focus:border-primary" />, declare that the information provided above is accurate and complete. I understand that Sai Medhansh Hub will not be responsible for any unforeseen incidents or health issues not disclosed in this form.
                     </p>
                     {form.formState.errors.declarationParentName && <p className="text-sm text-destructive mt-1">{form.formState.errors.declarationParentName.message}</p>}
-                    
+
                     <div className="grid md:grid-cols-2 gap-4 items-end">
                         <div>
                             <Label htmlFor="declarationDate">Date</Label>
@@ -374,27 +354,71 @@ export function StudentApplicationForm() {
                 </CardContent>
             </Card>
 
+             {/* For Office Use Only Section - Now Interactive */}
+            <Card className="card-within-form">
+                <CardHeader>
+                <CardTitle className="font-headline text-xl">For Office Use Only</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4 md:space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <Label htmlFor="officeEnrollmentNumber">Enrollment Number</Label>
+                            <Input id="officeEnrollmentNumber" {...form.register('officeEnrollmentNumber')} />
+                            {form.formState.errors.officeEnrollmentNumber && <p className="text-sm text-destructive mt-1">{form.formState.errors.officeEnrollmentNumber.message}</p>}
+                        </div>
+                        <div>
+                            <Label htmlFor="officeBatchAssigned">Batch Assigned</Label>
+                            <Input id="officeBatchAssigned" {...form.register('officeBatchAssigned')} />
+                            {form.formState.errors.officeBatchAssigned && <p className="text-sm text-destructive mt-1">{form.formState.errors.officeBatchAssigned.message}</p>}
+                        </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <Label htmlFor="officeTuitionFee">Tuition Fee</Label>
+                            <Input id="officeTuitionFee" {...form.register('officeTuitionFee')} />
+                            {form.formState.errors.officeTuitionFee && <p className="text-sm text-destructive mt-1">{form.formState.errors.officeTuitionFee.message}</p>}
+                        </div>
+                        <div>
+                            <Label htmlFor="officeTuitionFeeInWords">In Words</Label>
+                            <Input id="officeTuitionFeeInWords" {...form.register('officeTuitionFeeInWords')} />
+                            {form.formState.errors.officeTuitionFeeInWords && <p className="text-sm text-destructive mt-1">{form.formState.errors.officeTuitionFeeInWords.message}</p>}
+                        </div>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <Label htmlFor="officePaymentDate">Payment Date</Label>
+                            <Controller
+                                name="officePaymentDate"
+                                control={form.control}
+                                render={({ field }) => (
+                                    <DatePickerInput
+                                    id="officePaymentDate"
+                                    value={field.value || undefined} // Pass undefined if null
+                                    onChange={field.onChange}
+                                    placeholder="Select payment date"
+                                    />
+                                )}
+                            />
+                            {form.formState.errors.officePaymentDate && <p className="text-sm text-destructive mt-1">{form.formState.errors.officePaymentDate.message}</p>}
+                        </div>
+                        <div>
+                            <Label htmlFor="officeStaffName">Staff Name</Label>
+                            <Input id="officeStaffName" {...form.register('officeStaffName')} />
+                            {form.formState.errors.officeStaffName && <p className="text-sm text-destructive mt-1">{form.formState.errors.officeStaffName.message}</p>}
+                        </div>
+                    </div>
+                    <div>
+                        <Label htmlFor="officeSignature">Signature (Staff)</Label>
+                        <Input id="officeSignature" {...form.register('officeSignature')} placeholder="Type full name" />
+                        {form.formState.errors.officeSignature && <p className="text-sm text-destructive mt-1">{form.formState.errors.officeSignature.message}</p>}
+                    </div>
+                </CardContent>
+            </Card>
+
             <div className="text-center md:text-right pt-4">
-              <SubmitButton />
+              <PrintButton />
             </div>
           </form>
-        </CardContent>
-      </Card>
-
-      {/* For Office Use Only Section */}
-      <Card className="w-full max-w-4xl mx-auto shadow-xl mt-8">
-        <CardHeader>
-          <CardTitle className="font-headline text-xl text-center md:text-left">For Office Use Only</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 text-sm text-muted-foreground">
-          <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
-            <p><strong>Enrollment Number:</strong> ____________________</p>
-            <p><strong>Batch Assigned:</strong> ____________________</p>
-            <p><strong>Tuition Fee:</strong> _______________ IN WORDS: _____________________________________</p>
-            <p><strong>Payment Date:</strong> ____________________</p>
-            <p><strong>Staff Name:</strong> ____________________</p>
-            <p><strong>Signature:</strong> ____________________</p>
-          </div>
         </CardContent>
       </Card>
     </div>

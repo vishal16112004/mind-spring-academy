@@ -44,7 +44,16 @@ export const studentApplicationSchema = z.object({
   // Declaration
   declarationParentName: z.string().min(2, { message: "Parent/Guardian name for declaration is required." }),
   declarationDate: z.date({ required_error: "Declaration date is required." }),
-  // No field for signature, implicitly handled by form submission
+
+  // For Office Use Only
+  officeEnrollmentNumber: z.string().optional(),
+  officeBatchAssigned: z.string().optional(),
+  officeTuitionFee: z.string().optional(),
+  officeTuitionFeeInWords: z.string().optional(),
+  officePaymentDate: z.date().optional().nullable(),
+  officeStaffName: z.string().optional(),
+  officeSignature: z.string().optional(), // For typed signature
+
 }).superRefine((data, ctx) => {
   if (data.healthConcerns === "yes" && (!data.healthConcernsDetails || data.healthConcernsDetails.trim() === "")) {
     ctx.addIssue({

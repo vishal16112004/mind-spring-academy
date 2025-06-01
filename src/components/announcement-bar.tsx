@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Megaphone, X } from 'lucide-react';
@@ -20,7 +21,10 @@ export function AnnouncementBar() {
   }
 
   return (
-    <div className="bg-primary text-primary-foreground py-2 px-4 text-center text-sm relative">
+    <div 
+      className="bg-primary text-primary-foreground py-2 px-4 text-center text-sm relative"
+      data-print-hide="true"
+    >
       <div className="container mx-auto flex items-center justify-center">
         <Megaphone className="h-5 w-5 mr-2 shrink-0" />
         <span>{announcementText}</span>
