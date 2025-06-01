@@ -27,15 +27,15 @@ export function Header() {
       data-print-hide="true"
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 text-lg font-headline font-bold text-primary"> {/* Changed text-xl to text-lg */}
+        <Link href="#home" className="flex items-center gap-2 text-base font-headline font-semibold text-primary">
           <Image 
             src="/logo.png" 
             alt="Mind Spring Academy Logo"
-            width={120} // Reduced from 150
-            height={37} // Reduced from 47, maintaining aspect ratio
-            className="object-contain"
+            width={40} 
+            height={40} 
+            className="object-contain rounded-full"
           />
-          <span className="sr-only lg:not-sr-only">Mind Spring Academy</span> {/* Text now appears on lg screens and up */}
+          <span className="sr-only lg:not-sr-only">Mind Spring Academy</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -64,13 +64,13 @@ export function Header() {
             <SheetContent side="right" className="w-full max-w-xs bg-background p-6">
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
-                   <Link href="#home" className="flex items-center gap-2 text-lg font-headline font-bold text-primary"> {/* Changed text-xl to text-lg */}
+                   <Link href="#home" className="flex items-center gap-2 text-base font-headline font-semibold text-primary">
                     <Image 
                         src="/logo.png" 
                         alt="Mind Spring Academy Logo"
-                        width={110} // Reduced from 115
-                        height={34}  // Reduced from 36, maintaining aspect ratio
-                        className="object-contain"
+                        width={36} 
+                        height={36}  
+                        className="object-contain rounded-full"
                     />
                      <span className="sr-only">Mind Spring Academy</span>
                    </Link>
