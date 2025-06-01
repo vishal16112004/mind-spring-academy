@@ -17,10 +17,13 @@ import { DatePickerInput } from '@/components/ui/date-picker-input';
 import { useToast } from '@/hooks/use-toast';
 import { 
   submitStudentApplication, 
-  type StudentApplicationFormState, 
-  type StudentApplicationFormValues,
-  studentApplicationSchema // Import the Zod schema object
+  type StudentApplicationFormState
 } from '@/app/application/actions'; 
+import { 
+  studentApplicationSchema, // Import the Zod schema object
+  type StudentApplicationFormValues 
+} from '@/app/application/schemas';
+
 
 function SubmitButton() {
   const { pending } = useFormStatus();
