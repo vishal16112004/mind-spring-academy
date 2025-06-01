@@ -38,7 +38,8 @@ export function Header() {
             height={40}
             className="object-contain rounded-full"
           />
-          <span className="font-headline font-semibold hidden sm:inline-block text-xs md:text-sm">Mind Spring Academy</span>
+          {/* Changed: removed 'hidden sm:inline-block', base size is text-xs, md gets text-sm */}
+          <span className="font-headline font-semibold inline-block text-xs md:text-sm">Mind Spring Academy</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
@@ -118,3 +119,5 @@ export function Header() {
     </header>
   );
 }
+
+    
